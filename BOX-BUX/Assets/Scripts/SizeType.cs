@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.ProBuilder;
 
+[Serializable]
 public enum SizeType
 {
     XSMALL, SMALL, NORMAL, BIG, XBIG
