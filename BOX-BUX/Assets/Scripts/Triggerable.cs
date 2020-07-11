@@ -10,6 +10,7 @@ namespace Assets.Scripts
     {
         void SetMaterial(MaterialType type);
         void SetShape(ShapeType type);
+        void SetSize(SizeType type);
         MaterialType GetMaterialType();
         ShapeType GetShapeType();
     }

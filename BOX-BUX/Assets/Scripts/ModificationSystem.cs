@@ -23,6 +23,7 @@ public class ModificationSystem : MonoBehaviour
     {
         MaterialType? material = null;
         ShapeType? shape = null;
+        SizeType? size = null;
         switch (type)
         {
             case ChangeType.MAT_MATTE_GREY:
@@ -85,6 +86,21 @@ public class ModificationSystem : MonoBehaviour
             case ChangeType.SHAPE_TETRAHEDRON:
                 shape = ShapeType.TETRAHEDRON;
                 break;
+            case ChangeType.SIZE_BIG:
+                size = SizeType.BIG;
+                break;
+            case ChangeType.SIZE_NORMAL:
+                size = SizeType.NORMAL;
+                break;
+            case ChangeType.SIZE_SMALL:
+                size = SizeType.SMALL;
+                break;
+            case ChangeType.SIZE_XBIG:
+                size = SizeType.XBIG;
+                break;
+            case ChangeType.SIZE_XSMALL:
+                size = SizeType.XSMALL;
+                break;
             default:
                 throw new System.Exception("unhandled ChangeType: " + type);
         }
@@ -96,6 +112,10 @@ public class ModificationSystem : MonoBehaviour
         else if (material != null)
         {
             triggerable.SetMaterial(material.Value);
+        }
+        else if(size != null)
+        {
+            triggerable.SetSize(size.Value);
         }
     }
 
