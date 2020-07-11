@@ -25,15 +25,15 @@ namespace VHS
             }
         }
 
+        #region garbo
+
         public void OnHold()
         {
-            Debug.Log("onhold");
 
         }
 
         public void OnPickUp()
         {
-            Debug.Log("OnPickUp");
         }
 
         public void OnRelease()
@@ -41,4 +41,5 @@ namespace VHS
             
         }
     }
+#endregion garbo
 }
