@@ -15,8 +15,8 @@ public class WalkthroughTrigger : MonoBehaviour
 
     public void Start()
     {
-        forwardChange = FindObjectsOfType<ModificationSystem>()[0].materialPairing.Single(mp => mp.changeType == forwardChangeType).material;
-        backwardChange = FindObjectsOfType<ModificationSystem>()[0].materialPairing.Single(mp => mp.changeType == backwardChangeType).material;
+        forwardChange = ModificationSystem.get().getMaterial(forwardChangeType);
+        backwardChange = ModificationSystem.get().getMaterial(backwardChangeType);
     }
 
     public void OnTriggerEnter(Collider other)

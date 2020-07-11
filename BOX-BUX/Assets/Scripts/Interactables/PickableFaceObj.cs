@@ -6,9 +6,8 @@ namespace VHS
 {
     public class PickableFaceObj : Pickable
     {
-        public void OnFace(Face face)
+        public void OnFace()
         {
-            Debug.Log(face);
             base.OnInteract();
         }
     }

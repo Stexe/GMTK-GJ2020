@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using static Effect_ChangeMaterial;
 
 namespace VHS {
-    public enum Face
-    {
-        ONE, TWO, THREE, FOUR
-    }
     public class PickableFace : InteractableBase
     {
-        public Face face;
-        public Rigidbody rigid;
+        public ChangeType changeType;
+        
         private PickableFaceObj parent;
+        private Material material;
 
         public void Awake()
         {
             parent = GetComponentInParent<PickableFaceObj>();
             Assert.IsNotNull(parent);
-            rigid = GetComponent<Rigidbody>();
+            material = ModificationSystem.get().getMaterial(changeType);
         }
 
         public override void OnInteract()
         {
-            parent.OnFace(face);
+            if (parent.holder.held == null)
+            {
+                // avoid setting material on drop
+                parent.GetComponent<MeshRenderer>().material = material;
+            }
+            parent.OnFace();
         }
     }
 }
