@@ -50,7 +50,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4371112378521538168}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -72,7 +72,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 0
+  materialType: 0
 --- !u!54 &4371112378521538117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4371112378622436967}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -161,7 +161,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 0
+  materialType: 0
 --- !u!54 &4371112378622436961
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4371112378834009186}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -250,7 +250,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 0
+  materialType: 0
 --- !u!54 &4371112378834009196
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -364,7 +364,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 28a5a81b8a4e0a049b248591eda164c4, type: 3}
 --- !u!54 &4371112378994823072
@@ -402,6 +402,8 @@ MonoBehaviour:
   tooltipMessage: 
   holder: {fileID: 0}
   rigid: {fileID: 0}
+  materialType: 0
+  shapeType: 0
 --- !u!1 &4371112380280299026
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +454,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4371112380280299026}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -474,7 +476,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 0
+  materialType: 0
 --- !u!54 &4371112380280299036
 Rigidbody:
   m_ObjectHideFlags: 0
