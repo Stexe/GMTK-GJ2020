@@ -1,0 +1,41 @@
+﻿using Assets.Scripts;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using VHS;
+using static Effect_ChangeMaterial;
+
+public class WalkthroughTrigger : MonoBehaviour
+{
+    public ChangeType forwardChangeType;
+    public ChangeType backwardChangeType;
+    private Material forwardChange;
+    private Material backwardChange;
+
+    public void Start()
+    {
+        forwardChange = FindObjectsOfType<ModificationSystem>()[0].materialPairing.Single(mp => mp.changeType == forwardChangeType).material;
+        backwardChange = FindObjectsOfType<ModificationSystem>()[0].materialPairing.Single(mp => mp.changeType == backwardChangeType).material;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("TRIGGER");
+        Triggerable pickable = other.GetComponent<Triggerable>();
+        if(pickable == null)
+        {
+            return;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            Debug.Log("Trigger forwards");
+            other.GetComponent<MeshRenderer>().material = forwardChange;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            Debug.Log("Trigger backwards");
+            other.GetComponent<MeshRenderer>().material = backwardChange;
+        }
+    }
+}
