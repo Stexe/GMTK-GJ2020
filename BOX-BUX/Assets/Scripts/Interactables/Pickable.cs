@@ -22,7 +22,6 @@ namespace VHS
         {
             if (holder.held == null)
             {
-                Debug.Log("Holding");
                 holder.SetHeld(this.gameObject);
                 rigid.isKinematic = true;
             }
@@ -49,6 +48,16 @@ namespace VHS
         {
             
         }
+        #endregion garbo
+
+        public MaterialType GetMaterialType()
+        {
+            return materialType;
+        }
+
+        public ShapeType GetShapeType()
+        {
+            return shapeType;
+        }
     }
-#endregion garbo
 }

@@ -9,5 +9,7 @@ namespace Assets.Scripts
     public interface Triggerable
     {
         void SetMaterial(MaterialType type);
+        MaterialType GetMaterialType();
+        ShapeType GetShapeType();
     }
 }

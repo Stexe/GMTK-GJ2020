@@ -33,7 +33,6 @@ public class Holder : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && !becomingHeld)
         {
-            Debug.Log("Releasing");
             held.GetComponent<Rigidbody>().isKinematic = false;
             held = null;
             releasing = true;

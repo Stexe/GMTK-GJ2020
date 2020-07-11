@@ -12,7 +12,6 @@ public class WalkthroughTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGER");
         Triggerable pickable = other.GetComponent<Triggerable>();
         if(pickable == null)
         {
@@ -20,12 +19,10 @@ public class WalkthroughTrigger : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            Debug.Log("Trigger forwards");
             pickable.SetMaterial(forwardChange);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("Trigger backwards");
             pickable.SetMaterial(backwardChange);
         }
     }
