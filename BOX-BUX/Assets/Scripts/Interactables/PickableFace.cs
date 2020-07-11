@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 namespace VHS {
     public class PickableFace : InteractableBase
     {
-        public MaterialType materialType;
+        public ChangeType changeType;
         
         private PickableFaceObj parent;
 
@@ -20,8 +20,7 @@ namespace VHS {
         {
             if (parent.holder.held == null)
             {
-                // avoid setting material on drop
-                parent.SetMaterial(materialType);
+                ModificationSystem.MakeChange(parent, changeType);
             }
             parent.OnFace();
         }

@@ -7,23 +7,23 @@ using VHS;
 
 public class WalkthroughTrigger : MonoBehaviour
 {
-    public MaterialType forwardChange;
-    public MaterialType backwardChange;
+    public ChangeType forwardChange;
+    public ChangeType backwardChange;
 
     public void OnTriggerEnter(Collider other)
     {
-        Triggerable pickable = other.GetComponent<Triggerable>();
-        if(pickable == null)
+        Triggerable triggerable = other.GetComponent<Triggerable>();
+        if(triggerable == null)
         {
             return;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            pickable.SetMaterial(forwardChange);
+            ModificationSystem.MakeChange(triggerable, forwardChange);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            pickable.SetMaterial(backwardChange);
+            ModificationSystem.MakeChange(triggerable, backwardChange);
         }
     }
 }

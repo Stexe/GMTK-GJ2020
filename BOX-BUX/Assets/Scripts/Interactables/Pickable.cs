@@ -30,7 +30,7 @@ namespace VHS
         public void SetMaterial(MaterialType type)
         {
             materialType = type;
-            gameObject.GetComponent<MeshRenderer>().material = ModificationSystem.get().getMaterial(type);
+            gameObject.GetComponent<MeshRenderer>().material = ModificationSystem.get().getMaterial(type).material;
         }
 
         public void SetShape(ShapeType type)
@@ -39,12 +39,17 @@ namespace VHS
             {
                 return;
             }
+            bool cube = type == ShapeType.CUBE;
             var faces = GetComponentsInChildren<PickableFace>();
             foreach(var face in faces)
             {
-                face.GetComponent<BoxCollider>().enabled = type == ShapeType.CUBE;
+                face.GetComponent<BoxCollider>().enabled = cube;
             }
+            isInteractable = !cube;
 
+            var shape = ModificationSystem.get().getShape(type);
+            gameObject.GetComponent<MeshFilter>().mesh = shape.mesh;
+            gameObject.GetComponent<MeshCollider>().sharedMesh = shape.mesh;
         }
 
         #region garbo

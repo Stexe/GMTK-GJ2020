@@ -9,5 +9,5 @@ using UnityEngine;
 public class ShapePairing
 {
     public ShapeType type;
-    public GameObject model;
+    public Mesh mesh;
 }
