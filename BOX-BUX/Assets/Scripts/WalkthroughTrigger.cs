@@ -4,20 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using VHS;
-using static Effect_ChangeMaterial;
 
 public class WalkthroughTrigger : MonoBehaviour
 {
-    public MaterialType forwardChangeType;
-    public MaterialType backwardChangeType;
-    private Material forwardChange;
-    private Material backwardChange;
-
-    public void Start()
-    {
-        forwardChange = ModificationSystem.get().getMaterial(forwardChangeType);
-        backwardChange = ModificationSystem.get().getMaterial(backwardChangeType);
-    }
+    public MaterialType forwardChange;
+    public MaterialType backwardChange;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -30,12 +21,12 @@ public class WalkthroughTrigger : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             Debug.Log("Trigger forwards");
-            other.GetComponent<MeshRenderer>().material = forwardChange;
+            pickable.SetMaterial(forwardChange);
         }
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("Trigger backwards");
-            other.GetComponent<MeshRenderer>().material = backwardChange;
+            pickable.SetMaterial(backwardChange);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Effect_ChangeMaterial;
 
 public class ModificationSystem : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class ModificationSystem : MonoBehaviour
 
     public Material getMaterial(MaterialType changeType)
     {
-        return materialPairing.Single(mp => mp.materialType == changeType).material;
+        return materialPairing.Single(mp => mp.type== changeType).material;
     }
 
     public static ModificationSystem get()

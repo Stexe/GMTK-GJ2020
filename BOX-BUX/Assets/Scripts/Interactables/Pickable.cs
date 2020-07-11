@@ -9,6 +9,8 @@ namespace VHS
     {
         public Holder holder;
         public Rigidbody rigid;
+        public MaterialType materialType;
+        public ShapeType shapeType;
 
         private void Awake()
         {
@@ -26,9 +28,10 @@ namespace VHS
             }
         }
 
-        public virtual void DestroyRigid()
+        public void SetMaterial(MaterialType type)
         {
-            Destroy(rigid);
+            materialType = type;
+            gameObject.GetComponent<MeshRenderer>().material = ModificationSystem.get().getMaterial(type);
         }
 
         #region garbo
