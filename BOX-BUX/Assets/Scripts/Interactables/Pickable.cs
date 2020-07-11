@@ -33,6 +33,20 @@ namespace VHS
             gameObject.GetComponent<MeshRenderer>().material = ModificationSystem.get().getMaterial(type);
         }
 
+        public void SetShape(ShapeType type)
+        {
+            if(shapeType == type)
+            {
+                return;
+            }
+            var faces = GetComponentsInChildren<PickableFace>();
+            foreach(var face in faces)
+            {
+                face.GetComponent<BoxCollider>().enabled = type == ShapeType.CUBE;
+            }
+
+        }
+
         #region garbo
 
         public void OnHold()

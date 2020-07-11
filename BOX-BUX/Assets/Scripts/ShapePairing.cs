@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 [Serializable]
-public enum ShapeType
+public class ShapePairing
 {
-    OCTAHEDRON, CUBE, TETRAHEDRON, DODECAHEDRON
+    public ShapeType type;
+    public GameObject model;
 }
