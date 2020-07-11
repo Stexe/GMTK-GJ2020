@@ -91,8 +91,8 @@ namespace VHS
 
             void ApplyRotation()
             {
-                transform.eulerAngles = new Vector3(0f,m_yaw,0f);
-                m_pitchTranform.localEulerAngles = new Vector3(m_pitch,0f,0f);
+                transform.eulerAngles = new Vector3(0f, m_yaw, 0f);
+                m_pitchTranform.localEulerAngles = new Vector3(m_pitch, 0f, 0f);
             }
 
             public void HandleSway(Vector3 _inputVector,float _rawXInput)
