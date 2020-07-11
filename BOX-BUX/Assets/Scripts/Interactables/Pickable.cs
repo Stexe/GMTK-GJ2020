@@ -5,7 +5,7 @@ using UnityEngine;
 namespace VHS
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Pickable : InteractableBase
+    public class Pickable: InteractableBase
     {
         public Holder holder;
         public Rigidbody rigid;
@@ -18,10 +18,11 @@ namespace VHS
 
         public override void OnInteract()
         {
-            if (holder.held != gameObject && holder.releasing == false)
+            if (holder.held != this)
             {
                 Debug.Log("Holding");
                 holder.SetHeld(this);
+                rigid.isKinematic = true;
             }
         }
 
