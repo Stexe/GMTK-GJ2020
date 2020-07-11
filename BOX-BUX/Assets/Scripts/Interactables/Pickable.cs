@@ -18,7 +18,7 @@ namespace VHS
 
         public override void OnInteract()
         {
-            if (holder.held != this.gameObject)
+            if (holder.held == null)
             {
                 Debug.Log("Holding");
                 holder.SetHeld(this.gameObject);
