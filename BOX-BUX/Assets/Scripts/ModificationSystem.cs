@@ -9,9 +9,9 @@ public class ModificationSystem : MonoBehaviour
 {
     public MaterialPairing[] materialPairing;
 
-    public Material getMaterial(ChangeType changeType)
+    public Material getMaterial(MaterialType changeType)
     {
-        return materialPairing.Single(mp => mp.changeType == changeType).material;
+        return materialPairing.Single(mp => mp.materialType == changeType).material;
     }
 
     public static ModificationSystem get()

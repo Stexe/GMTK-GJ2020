@@ -7,7 +7,7 @@ using static Effect_ChangeMaterial;
 namespace VHS {
     public class PickableFace : InteractableBase
     {
-        public ChangeType changeType;
+        public MaterialType materialType;
         
         private PickableFaceObj parent;
         private Material material;
@@ -16,7 +16,7 @@ namespace VHS {
         {
             parent = GetComponentInParent<PickableFaceObj>();
             Assert.IsNotNull(parent);
-            material = ModificationSystem.get().getMaterial(changeType);
+            material = ModificationSystem.get().getMaterial(materialType);
         }
 
         public override void OnInteract()

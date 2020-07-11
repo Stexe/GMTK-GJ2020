@@ -8,8 +8,8 @@ using static Effect_ChangeMaterial;
 
 public class WalkthroughTrigger : MonoBehaviour
 {
-    public ChangeType forwardChangeType;
-    public ChangeType backwardChangeType;
+    public MaterialType forwardChangeType;
+    public MaterialType backwardChangeType;
     private Material forwardChange;
     private Material backwardChange;
 
