@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace VHS
 {
-    [RequireComponent(typeof(Rigidbody))]
-    public class Pickable: InteractableBase
+    public class Pickable: InteractableBase, Triggerable
     {
         public Holder holder;
         public Rigidbody rigid;
@@ -18,12 +18,17 @@ namespace VHS
 
         public override void OnInteract()
         {
-            if (holder.held != this)
+            if (holder.held != this.gameObject)
             {
                 Debug.Log("Holding");
-                holder.SetHeld(this);
+                holder.SetHeld(this.gameObject);
                 rigid.isKinematic = true;
             }
+        }
+
+        public virtual void DestroyRigid()
+        {
+            Destroy(rigid);
         }
 
         #region garbo

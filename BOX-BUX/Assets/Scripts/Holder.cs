@@ -7,15 +7,13 @@ using VHS;
 
 public class Holder : MonoBehaviour
 {
-    public Pickable held;
+    public GameObject held;
     public bool releasing;
     private bool becomingHeld;
     public Vector3 holdOffset;
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        releasing = false;
         if (held == null)
         {
             return;
@@ -23,21 +21,30 @@ public class Holder : MonoBehaviour
         var pos = transform.position;
         var ray = new Ray(new Vector3(pos.x + holdOffset.x, pos.y + holdOffset.y, pos.z + holdOffset.z), transform.forward);
 
-        held.transform.position = ray.GetPoint(2);
+        held.GetComponent<Rigidbody>().position = ray.GetPoint(2);
+    }
+
+    private void Update()
+    {
+        releasing = false;
+        if (held == null)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.E) && !becomingHeld)
         {
             Debug.Log("Releasing");
-            held.rigid.isKinematic = false;
+            held.GetComponent<Rigidbody>().isKinematic = false;
             held = null;
             releasing = true;
         }
         becomingHeld = false;
     }
 
-    public void SetHeld(Pickable held)
+    public void SetHeld(GameObject held)
     {
         becomingHeld = true;
         this.held = held;
-        held.rigid.isKinematic = true;
+        held.GetComponent<Rigidbody>().isKinematic = true;
     }
 }

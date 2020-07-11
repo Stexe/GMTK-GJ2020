@@ -8,8 +8,8 @@ namespace VHS
 {        
     public class InteractionUIPanel : MonoBehaviour
     {
-        [SerializeField] private Image progressBar;
-        [SerializeField] private TextMeshProUGUI tooltipText;
+        [SerializeField] private Image progressBar = null;
+        [SerializeField] private TextMeshProUGUI tooltipText = null;
 
         public void SetTooltip(string tooltip)
         {

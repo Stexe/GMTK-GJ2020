@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VHS;
@@ -7,7 +8,8 @@ public class Trigger : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
-        Pickable pickable = other.GetComponent<Pickable>();
+        Debug.Log("TRIGGER");
+        Triggerable pickable = other.GetComponent<Triggerable>();
         if(pickable == null)
         {
             return;

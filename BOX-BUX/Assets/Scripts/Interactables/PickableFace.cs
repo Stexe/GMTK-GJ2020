@@ -11,12 +11,14 @@ namespace VHS {
     public class PickableFace : InteractableBase
     {
         public Face face;
+        public Rigidbody rigid;
         private PickableFaceObj parent;
 
         public void Awake()
         {
             parent = GetComponentInParent<PickableFaceObj>();
             Assert.IsNotNull(parent);
+            rigid = GetComponent<Rigidbody>();
         }
 
         public override void OnInteract()

@@ -12,7 +12,7 @@ namespace VHS
             [SerializeField] private InteractionData interactionData = null;
 
             [Space, Header("UI")]
-            [SerializeField] private InteractionUIPanel uiPanel;
+            [SerializeField] private InteractionUIPanel uiPanel = null;
 
             [Space, Header("Ray Settings")]
             [SerializeField] private float rayDistance = 0f;
