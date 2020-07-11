@@ -9,7 +9,7 @@ public class ModificationSystem : MonoBehaviour
     public MaterialPairing[] materialPairing;
     public ShapePairing[] shapePairing;
 
-    public MaterialPairing getMaterial(MaterialType changeType)
+    public MaterialPairing getMaterial(ColorAndMaterialType changeType)
     {
         return materialPairing.Single(mp => mp.type == changeType);
     }
@@ -21,58 +21,35 @@ public class ModificationSystem : MonoBehaviour
 
     public static void MakeChange(Triggerable triggerable, ChangeType type)
     {
+        ColorType? color = null;
         MaterialType? material = null;
         ShapeType? shape = null;
         SizeType? size = null;
         switch (type)
         {
-            case ChangeType.MAT_MATTE_GREY:
-                material = MaterialType.MATTE_GREY;
+            case ChangeType.COLOR_GREY:
+                color = ColorType.GREY;
                 break;
-            case ChangeType.MAT_MATTE_RED:
-                material = MaterialType.MATTE_RED;
+            case ChangeType.COLOR_BLUE:
+                color = ColorType.BLUE;
                 break;
-            case ChangeType.MAT_MATTE_BLUE:
-                material = MaterialType.MATTE_BLUE;
+            case ChangeType.COLOR_RED:
+                color = ColorType.RED;
                 break;
-            case ChangeType.MAT_MATTE_YELLOW:
-                material = MaterialType.MATTE_YELLOW;
+            case ChangeType.COLOR_YELLOW:
+                color = ColorType.YELLOW;
                 break;
-            case ChangeType.MAT_METAL_GREY:
-                material = MaterialType.METAL_GREY;
+            case ChangeType.MAT_ABSTRACT:
+                material = MaterialType.ABSTRACT;
                 break;
-            case ChangeType.MAT_METAL_RED:
-                material = MaterialType.METAL_RED;
+            case ChangeType.MAT_CHECKERED:
+                material = MaterialType.CHECKERED;
                 break;
-            case ChangeType.MAT_METAL_BLUE:
-                material = MaterialType.METAL_BLUE;
+            case ChangeType.MAT_MATTE:
+                material = MaterialType.MATTE;
                 break;
-            case ChangeType.MAT_METAL_YELLOW:
-                material = MaterialType.METAL_YELLOW;
-                break;
-            case ChangeType.MAT_CHECKERED_GREY:
-                material = MaterialType.CHECKERED_GREY;
-                break;
-            case ChangeType.MAT_CHECKERED_RED:
-                material = MaterialType.CHECKERED_RED;
-                break;
-            case ChangeType.MAT_CHECKERED_BLUE:
-                material = MaterialType.CHECKERED_BLUE;
-                break;
-            case ChangeType.MAT_CHECKERED_YELLOW:
-                material = MaterialType.CHECKERED_YELLOW;
-                break;
-            case ChangeType.MAT_ABSTRACT_GREY:
-                material = MaterialType.ABSTRACT_GREY;
-                break;
-            case ChangeType.MAT_ABSTRACT_RED:
-                material = MaterialType.ABSTRACT_RED;
-                break;
-            case ChangeType.MAT_ABSTRACT_BLUE:
-                material = MaterialType.ABSTRACT_BLUE;
-                break;
-            case ChangeType.MAT_ABSTRACT_YELLOW:
-                material = MaterialType.ABSTRACT_YELLOW;
+            case ChangeType.MAT_METAL:
+                material = MaterialType.METAL;
                 break;
             case ChangeType.SHAPE_CUBE:
                 shape = ShapeType.CUBE;
@@ -109,11 +86,15 @@ public class ModificationSystem : MonoBehaviour
         {
             triggerable.SetShape(shape.Value);
         }
+        else if (color != null)
+        {
+            triggerable.SetColor(color.Value);
+        }
         else if (material != null)
         {
             triggerable.SetMaterial(material.Value);
         }
-        else if(size != null)
+        else if (size != null)
         {
             triggerable.SetSize(size.Value);
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 [Serializable]
-public enum MaterialType
+public enum ColorType
 {
-    ABSTRACT, CHECKERED, MATTE, METAL
+    GREY, RED, BLUE, YELLOW
 }

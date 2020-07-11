@@ -8,6 +8,6 @@ using UnityEngine;
 [Serializable]
 public class MaterialPairing
 {
-    public MaterialType type;
+    public ColorAndMaterialType type;
     public Material material;
 }

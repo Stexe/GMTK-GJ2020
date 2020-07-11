@@ -5,22 +5,25 @@ using UnityEngine;
 
 public class DeliveryZone : MonoBehaviour
 {
+    public ColorType colorGoal;
     public MaterialType materialGoal;
     public ShapeType shapeGoal;
 
     private void Start()
     {
-        Debug.Log("GOAL: " + materialGoal + ", " + shapeGoal);
+        Debug.Log("GOAL: " + materialGoal + ", " + colorGoal + ", " + shapeGoal);
     }
 
     public void OnTriggerEnter(Collider other)
     {
         Triggerable triggerable = other.GetComponent<Triggerable>();
-        if(triggerable == null)
+        if (triggerable == null)
         {
             return;
         }
-        if(triggerable.GetShapeType() == shapeGoal && triggerable.GetMaterialType() == materialGoal)
+        if (triggerable.GetShapeType() == shapeGoal
+            && triggerable.GetMaterialType() == materialGoal
+            && triggerable.GetColorType() == colorGoal)
         {
             Debug.Log("GIANT ENEMY GOAL GOT");
         }
