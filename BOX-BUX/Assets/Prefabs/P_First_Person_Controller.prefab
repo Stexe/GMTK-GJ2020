@@ -100,10 +100,10 @@ MonoBehaviour:
     runTransitionDuration: 0.75
     runReturnTransitionDuration: 0.5
   cameraSway:
-    swayAmount: 1
-    swaySpeed: 1
-    returnSpeed: 3
-    changeDirectionMultiplier: 4
+    swayAmount: 0
+    swaySpeed: 0
+    returnSpeed: 0
+    changeDirectionMultiplier: 0
     swayCurve:
       serializedVersion: 2
       m_Curve:
@@ -128,8 +128,8 @@ MonoBehaviour:
       m_PreInfinity: 0
       m_PostInfinity: 2
       m_RotationOrder: 4
-  sensitivity: {x: 40, y: 40}
-  smoothAmount: {x: 5, y: 5}
+  sensitivity: {x: 90, y: 90}
+  smoothAmount: {x: 20, y: 20}
   lookAngleMinMax: {x: -90, y: 90}
 --- !u!1 &3843716869417167139
 GameObject:
@@ -390,12 +390,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementInputData: {fileID: 11400000, guid: abad080c0665fdc4cb00444da1f990a9, type: 2}
   headBobData: {fileID: 11400000, guid: fd51ede42cc20a04da93c2d2fac1e05c, type: 2}
-  crouchSpeed: 1
-  walkSpeed: 3
-  runSpeed: 6
-  jumpSpeed: 6
-  moveBackwardsSpeedPercent: 0.5
-  moveSideSpeedPercent: 0.7
+  crouchSpeed: 3
+  walkSpeed: 5
+  runSpeed: 7
+  jumpSpeed: 7
+  moveBackwardsSpeedPercent: 0.7
+  moveSideSpeedPercent: 0.9
   canRunThreshold: 0.7
   runTransitionCurve:
     serializedVersion: 2
@@ -543,6 +543,7 @@ MonoBehaviour:
   interactionInputData: {fileID: 11400000, guid: 53d9f3696d1130146ae3edd77cffcd05,
     type: 2}
   interactionData: {fileID: 11400000, guid: 229de2e6b9a896344928fb2041804439, type: 2}
+  uiPanel: {fileID: 0}
   rayDistance: 5
   raySphereRadius: 0.3
   interactableLayer:

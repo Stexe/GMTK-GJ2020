@@ -18,12 +18,12 @@ namespace VHS
                     
                 #region Locomotion
                     [Space, Header("Locomotion Settings")]
-                    [SerializeField] private float crouchSpeed = 1f;
-                    [SerializeField] private float walkSpeed = 2f;
-                    [SerializeField] private float runSpeed = 3f;
+                    [SerializeField] private float crouchSpeed = 2f;
+                    [SerializeField] private float walkSpeed = 3f;
+                    [SerializeField] private float runSpeed = 4f;
                     [SerializeField] private float jumpSpeed = 5f;
-                    [Slider(0f,1f)][SerializeField] private float moveBackwardsSpeedPercent = 0.5f;
-                    [Slider(0f,1f)][SerializeField] private float moveSideSpeedPercent = 0.75f;
+                    [Slider(0f,1f)][SerializeField] private float moveBackwardsSpeedPercent = 0.75f;
+                    [Slider(0f,1f)][SerializeField] private float moveSideSpeedPercent = 0.9f;
                 #endregion
 
                 #region Run Settings
@@ -55,7 +55,7 @@ namespace VHS
                     
                     [SerializeField] private LayerMask groundLayer = ~0;
                     [Slider(0f,1f)][SerializeField] private float rayLength = 0.1f;
-                    [Slider(0.01f,1f)][SerializeField] private float raySphereRadius = 0.1f;
+                    [Slider(0.01f,1f)][SerializeField] private float raySphereRadius = 0.2f;
                 #endregion
 
                 #region Wall Settings
