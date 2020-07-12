@@ -18,7 +18,8 @@ namespace VHS {
 
         public override void OnInteract()
         {
-            if (parent.holder.held == null)
+            bool inFacesZone = GlobalState.get().facesZone.GetComponent<Collider>().bounds.Intersects(parent.GetComponent<Collider>().bounds);
+            if (parent.holder.held == null && inFacesZone)
             {
                 ModificationSystem.MakeChange(parent, changeType);
             }

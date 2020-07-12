@@ -7,6 +7,12 @@ public class GlobalState : MonoBehaviour
 {
     public int spawnLimit = 4;
     public List<Pickable> spawned = new List<Pickable>();
+    public GameObject facesZone;
+
+    public static GlobalState get()
+    {
+        return FindObjectOfType<GlobalState>();
+    }
 
     public void OnSpawned(Pickable pickable)
     {
