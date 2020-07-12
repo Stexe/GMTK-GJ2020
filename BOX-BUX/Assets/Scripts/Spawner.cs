@@ -11,10 +11,7 @@ public class Spawner : InteractableBase
 {
     public Pickable box;
     public Vector3 spawnPosition;
-
-    public List<Pickable> spawned = new List<Pickable>();
-
-    public int boxLimit = 4;
+    public GlobalState state;
 
     public SizeType defaultSize = SizeType.NORMAL;
     public ColorType defaultColor = ColorType.BLUE;
@@ -25,14 +22,19 @@ public class Spawner : InteractableBase
     public bool randomMaterial;
     public bool randomShape;
 
+    private void Start()
+    {
+        state = FindObjectOfType<GlobalState>();
+    }
+
     public override void OnInteract()
     {
-        if (spawned.Count >= boxLimit)
+        if (state.spawned.Count >= state.spawnLimit)
         {
             return;
         }
         var created = Instantiate(box);
-        spawned.Add(created);
+        state.OnSpawned(created);
 
 
         if (randomSize)

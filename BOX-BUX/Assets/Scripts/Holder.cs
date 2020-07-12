@@ -7,7 +7,7 @@ using VHS;
 
 public class Holder : MonoBehaviour
 {
-    public GameObject held;
+    public Pickable held;
     public bool releasing;
     private bool becomingHeld;
     public Vector3 holdOffset;
@@ -40,7 +40,7 @@ public class Holder : MonoBehaviour
         becomingHeld = false;
     }
 
-    public void SetHeld(GameObject held)
+    public void SetHeld(Pickable held)
     {
         becomingHeld = true;
         this.held = held;

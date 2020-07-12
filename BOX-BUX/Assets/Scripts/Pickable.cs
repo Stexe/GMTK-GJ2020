@@ -25,7 +25,7 @@ namespace VHS
         {
             if (holder.held == null)
             {
-                holder.SetHeld(this.gameObject);
+                holder.SetHeld(this);
                 rigid.isKinematic = true;
             }
         }
@@ -198,6 +198,11 @@ namespace VHS
         public ShapeType GetShapeType()
         {
             return shapeType;
+        }
+
+        public Pickable asPickable()
+        {
+            return this;
         }
     }
 }
