@@ -21,6 +21,7 @@ public class DropZone : MonoBehaviour
 
     public ChangeType changeType;
     public float secondsToChange = 0.5f;
+
     private Dictionary<Pickable, ChangingState> countdowns = new Dictionary<Pickable, ChangingState>();
 
     private void Update()

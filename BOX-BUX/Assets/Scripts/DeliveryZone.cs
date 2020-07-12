@@ -1,17 +1,39 @@
 ﻿using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeliveryZone : MonoBehaviour
 {
-    public ColorType colorGoal;
-    public MaterialType materialGoal;
-    public ShapeType shapeGoal;
-
-    private void Start()
+    [Serializable]
+    public class Order
     {
-        Debug.Log("GOAL: " + materialGoal + ", " + colorGoal + ", " + shapeGoal);
+        public ColorType colorGoal;
+        public MaterialType materialGoal;
+        public ShapeType shapeGoal;
+    }
+
+    public List<Order> orders;
+    private Order currentOrder;
+    private bool wonPrinted = false;
+
+    private void Update()
+    {
+        if (currentOrder == null)
+        {
+            if (orders.Count > 0)
+            {
+                currentOrder = orders[0];
+                orders.RemoveAt(0);
+                Debug.Log("GOAL: " + currentOrder.materialGoal + ", " + currentOrder.colorGoal + ", " + currentOrder.shapeGoal);
+            }
+            else if (!wonPrinted)
+            {
+                wonPrinted = true;
+                Debug.Log("YOU ARE WIN");
+            }
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -21,11 +43,13 @@ public class DeliveryZone : MonoBehaviour
         {
             return;
         }
-        if (triggerable.GetShapeType() == shapeGoal
-            && triggerable.GetMaterialType() == materialGoal
-            && triggerable.GetColorType() == colorGoal)
+        if (triggerable.GetShapeType() == currentOrder.shapeGoal
+            && triggerable.GetMaterialType() == currentOrder.materialGoal
+            && triggerable.GetColorType() == currentOrder.colorGoal)
         {
             Debug.Log("GIANT ENEMY GOAL GOT");
+            Destroy(triggerable.asPickable().gameObject);
+            currentOrder = null;
         }
         else
         {
