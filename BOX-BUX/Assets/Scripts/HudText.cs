@@ -49,7 +49,7 @@ public class HudText : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreText.text = "Score: " + totalScore;
+        scoreText.text = "BUX: " + totalScore;
     }
 
     private void UpdateTimerText()
