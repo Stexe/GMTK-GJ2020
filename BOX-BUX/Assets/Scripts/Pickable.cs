@@ -20,6 +20,16 @@ public class Pickable : InteractableBase, Triggerable
         rigid = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        SightZone sightZone = GlobalState.get().sightZone;
+        bool inSightZone = sightZone.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds);
+        if (holder.held == null && inSightZone && !gameObject.GetComponent<Renderer>().isVisible)
+        {
+            ModificationSystem.MakeChange(this, sightZone.changeType);
+        }
+    }
+
     public override void OnInteract()
     {
         if (holder.held == null)
