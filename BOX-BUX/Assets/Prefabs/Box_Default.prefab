@@ -72,7 +72,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  materialType: 0
+  changeType: 3
 --- !u!54 &4371112378521538117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  materialType: 0
+  changeType: 3
 --- !u!54 &4371112378622436961
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  materialType: 0
+  changeType: 3
 --- !u!54 &4371112378834009196
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -332,7 +332,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2772acf0b9bb6b940a9f294959782073, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -402,8 +402,10 @@ MonoBehaviour:
   tooltipMessage: 
   holder: {fileID: 0}
   rigid: {fileID: 0}
-  materialType: 0
-  shapeType: 0
+  colorType: 0
+  materialType: 2
+  shapeType: 1
+  sizeType: 2
 --- !u!1 &4371112380280299026
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +478,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  materialType: 0
+  changeType: 3
 --- !u!54 &4371112380280299036
 Rigidbody:
   m_ObjectHideFlags: 0
