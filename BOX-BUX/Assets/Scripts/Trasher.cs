@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class Trasher : MonoBehaviour
 {
+    public ParticleSystem particle;
     public GlobalState state;
 
     private void Start()
@@ -26,6 +27,9 @@ public class Trasher : MonoBehaviour
         Pickable pick = toTrash.asPickable();
         if (pick.holder.held != pick)
         {
+            var p = Instantiate(particle);
+            p.transform.position = pick.transform.position;
+            p.Play();
             state.Trash(pick);
         }
     }
