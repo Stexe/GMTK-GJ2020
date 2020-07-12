@@ -12,11 +12,18 @@ public class DeliveryZone : MonoBehaviour
         public ColorType colorGoal;
         public MaterialType materialGoal;
         public ShapeType shapeGoal;
+        public SizeType sizeGoal;
     }
 
     public List<Order> orders;
     private Order currentOrder;
     private bool wonPrinted = false;
+    private HudText score;
+
+    private void Start()
+    {
+        score = FindObjectOfType<HudText>();
+    }
 
     private void Update()
     {
@@ -26,7 +33,7 @@ public class DeliveryZone : MonoBehaviour
             {
                 currentOrder = orders[0];
                 orders.RemoveAt(0);
-                Debug.Log("GOAL: " + currentOrder.materialGoal + ", " + currentOrder.colorGoal + ", " + currentOrder.shapeGoal);
+                Debug.Log("GOAL: " + currentOrder.materialGoal + ", " + currentOrder.colorGoal + ", " + currentOrder.shapeGoal + ", " + currentOrder.sizeGoal);
             }
             else if (!wonPrinted)
             {
@@ -38,22 +45,29 @@ public class DeliveryZone : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Triggerable triggerable = other.GetComponent<Triggerable>();
-        if (triggerable == null)
+        Triggerable box = other.GetComponent<Triggerable>();
+        if (box == null)
         {
             return;
         }
-        if (triggerable.GetShapeType() == currentOrder.shapeGoal
-            && triggerable.GetMaterialType() == currentOrder.materialGoal
-            && triggerable.GetColorType() == currentOrder.colorGoal)
+        if (box.GetShapeType() == currentOrder.shapeGoal
+            && box.GetMaterialType() == currentOrder.materialGoal
+            && box.GetColorType() == currentOrder.colorGoal
+            && box.GetSizeType() == currentOrder.sizeGoal)
         {
-            Debug.Log("GIANT ENEMY GOAL GOT");
-            Destroy(triggerable.asPickable().gameObject);
-            currentOrder = null;
+            Deliver(box.asPickable());
         }
         else
         {
-            Debug.Log("TRY FLIPPING OVER FOR TONS OF DAMAGE");
+            Debug.Log("TRY FLIPPING OVER FOR MASSIVE DAMAGE");
         }
+    }
+
+    private void Deliver(Pickable box)
+    {
+        Debug.Log("GIANT ENEMY GOAL GOT");
+        score.OnDelivered(box);
+        Destroy(box.gameObject);
+        currentOrder = null;
     }
 }
