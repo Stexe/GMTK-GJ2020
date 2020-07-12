@@ -145,7 +145,7 @@ public class Pickable : InteractableBase, Triggerable
             face.GetComponent<BoxCollider>().enabled = cube;
         }
         isInteractable = !cube;
-
+        shapeType = type;
         var shape = ModificationSystem.get().getShape(type);
         gameObject.GetComponent<MeshFilter>().mesh = shape.mesh;
         gameObject.GetComponent<MeshCollider>().sharedMesh = shape.mesh;
