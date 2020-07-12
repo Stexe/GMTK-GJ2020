@@ -12,6 +12,8 @@ public class Spawner : InteractableBase
     public Pickable box;
     public Vector3 spawnPosition;
     public GlobalState state;
+    public float secondsCooldown = 1.0f;
+    private float countdown;
 
     public SizeType defaultSize = SizeType.NORMAL;
     public ColorType defaultColor = ColorType.BLUE;
@@ -27,15 +29,24 @@ public class Spawner : InteractableBase
         state = FindObjectOfType<GlobalState>();
     }
 
+    private void Update()
+    {
+        if (countdown > 0)
+        {
+            countdown -= Time.deltaTime;
+        }
+    }
+
     public override void OnInteract()
     {
-        if (state.spawned.Count >= state.spawnLimit)
+        if (state.spawned.Count >= state.spawnLimit || countdown > 0)
         {
             return;
         }
+
+        countdown = secondsCooldown;
         var created = Instantiate(box);
         state.OnSpawned(created);
-
 
         if (randomSize)
         {
