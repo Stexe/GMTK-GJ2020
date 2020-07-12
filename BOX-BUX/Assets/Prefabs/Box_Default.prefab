@@ -72,7 +72,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 3
+  changeType: 6
 --- !u!54 &4371112378521538117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 3
+  changeType: 7
 --- !u!54 &4371112378622436961
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 3
+  changeType: 5
 --- !u!54 &4371112378834009196
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -406,6 +406,7 @@ MonoBehaviour:
   materialType: 2
   shapeType: 1
   sizeType: 2
+  spawner: {fileID: 0}
 --- !u!1 &4371112380280299026
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +479,7 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: interact
-  changeType: 3
+  changeType: 4
 --- !u!54 &4371112380280299036
 Rigidbody:
   m_ObjectHideFlags: 0
