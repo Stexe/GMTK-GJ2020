@@ -7,19 +7,14 @@ using UnityEngine.Events;
 
 public class DeliveryZone : MonoBehaviour
 {
-    public static EventTriggerable onDelivered;
-    public static EventOrder onNewOrder;
+    public static EventTriggerable onDelivered = new EventTriggerable();
+    public static EventOrder onNewOrder = new EventOrder();
 
     public List<Order> orders;
     private Order currentOrder;
     private bool wonPrinted = false;
     private HudText score;
-    private void Awake()
-    {
-        onDelivered = new EventTriggerable();
-        onNewOrder = new EventOrder();
-    }
-
+    
     private void Start()
     {
         score = FindObjectOfType<HudText>();

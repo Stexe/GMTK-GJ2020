@@ -11,6 +11,8 @@ public class Holder : MonoBehaviour
     public bool releasing;
     private bool becomingHeld;
     public Vector3 holdOffset;
+    public static EventTriggerable onHeld = new EventTriggerable();
+    public static EventTriggerable onRelease = new EventTriggerable();
 
     void FixedUpdate()
     {
@@ -33,6 +35,7 @@ public class Holder : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && !becomingHeld)
         {
+            onRelease.Invoke(held);
             held.GetComponent<Rigidbody>().isKinematic = false;
             held = null;
             releasing = true;
@@ -45,5 +48,6 @@ public class Holder : MonoBehaviour
         becomingHeld = true;
         this.held = held;
         held.GetComponent<Rigidbody>().isKinematic = true;
+        onHeld.Invoke(held);
     }
 }

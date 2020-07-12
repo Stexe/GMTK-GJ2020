@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ModificationSystem : MonoBehaviour
 {
+    public static EventTransform onTransform = new EventTransform();
+
     public MaterialPairing[] materialPairing;
     public ShapePairing[] shapePairing;
 
@@ -117,6 +119,8 @@ public class ModificationSystem : MonoBehaviour
         {
             triggerable.SetSize(size.Value);
         }
+
+        onTransform.Invoke(triggerable, type);
     }
 
     public static ModificationSystem get()
