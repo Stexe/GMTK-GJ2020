@@ -22,7 +22,7 @@ public class JumpTrigger : MonoBehaviour
         transform.position = new Vector3(pos.x, pos.y + yOffset, pos.z);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         var player = other.gameObject.GetComponent<CharacterController>();
         if (player != null)
