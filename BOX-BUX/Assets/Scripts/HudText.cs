@@ -18,6 +18,7 @@ public class HudText : MonoBehaviour
 
     private void Start()
     {
+        DeliveryZone.onDelivered.AddListener(OnDelivered);
         var texts = GetComponentsInChildren<Text>();
         timerText = texts.Single(t => t.name == "Timer");
         scoreText = texts.Single(t => t.name == "Score");

@@ -3,22 +3,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DeliveryZone : MonoBehaviour
 {
-    [Serializable]
-    public class Order
-    {
-        public ColorType colorGoal;
-        public MaterialType materialGoal;
-        public ShapeType shapeGoal;
-        public SizeType sizeGoal;
-    }
+    public static EventTriggerable onDelivered;
+    public static EventOrder onNewOrder;
 
     public List<Order> orders;
     private Order currentOrder;
     private bool wonPrinted = false;
     private HudText score;
+    private void Awake()
+    {
+        onDelivered = new EventTriggerable();
+        onNewOrder = new EventOrder();
+    }
 
     private void Start()
     {
@@ -33,6 +33,7 @@ public class DeliveryZone : MonoBehaviour
             {
                 currentOrder = orders[0];
                 orders.RemoveAt(0);
+                onNewOrder.Invoke(currentOrder);
                 Debug.Log("GOAL: " + currentOrder.materialGoal + ", " + currentOrder.colorGoal + ", " + currentOrder.shapeGoal + ", " + currentOrder.sizeGoal);
             }
             else if (!wonPrinted)
@@ -66,7 +67,7 @@ public class DeliveryZone : MonoBehaviour
     private void Deliver(Pickable box)
     {
         Debug.Log("GIANT ENEMY GOAL GOT");
-        score.OnDelivered(box);
+        onDelivered.Invoke(box);
         Destroy(box.gameObject);
         currentOrder = null;
     }

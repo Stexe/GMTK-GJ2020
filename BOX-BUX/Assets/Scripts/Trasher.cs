@@ -9,12 +9,13 @@ using Random = UnityEngine.Random;
 
 public class Trasher : MonoBehaviour
 {
+    public static EventTriggerable onTrashed;
     public ParticleSystem particle;
     public GlobalState state;
 
     private void Start()
     {
-        state = FindObjectOfType<GlobalState>();
+        onTrashed = new EventTriggerable();
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,7 +31,8 @@ public class Trasher : MonoBehaviour
             var p = Instantiate(particle);
             p.transform.position = pick.transform.position;
             p.Play();
-            state.Trash(pick);
+            onTrashed.Invoke(pick);
+            Destroy(pick.gameObject);
         }
     }
 }

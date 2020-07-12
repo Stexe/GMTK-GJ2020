@@ -16,17 +16,21 @@ public class GlobalState : MonoBehaviour
         return FindObjectOfType<GlobalState>();
     }
 
-    public void OnSpawned(Pickable pickable)
+    private void OnSpawned(Pickable pickable)
     {
         spawned.Add(pickable);
     }
 
-    public void Trash(Pickable toTrash)
+    private void Start()
     {
-        if (!spawned.Remove(toTrash))
+        Trasher.onTrashed.AddListener(Trash);
+    }
+
+    private void Trash(Triggerable toTrash)
+    {
+        if (!spawned.Remove(toTrash.asPickable()))
         {
             throw new System.Exception("Failed to trash: " + toTrash);
         }
-        Destroy(toTrash.gameObject);
     }
 }

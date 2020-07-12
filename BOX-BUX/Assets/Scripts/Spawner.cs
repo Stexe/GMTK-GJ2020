@@ -11,8 +11,9 @@ public class Spawner : InteractableBase
 {
     public Pickable box;
     public Vector3 spawnPosition;
-    public GlobalState state;
     public float secondsCooldown = 1.0f;
+    public static EventTriggerable onSpawned;
+    private GlobalState state;
     private float countdown;
 
     public SizeType defaultSize = SizeType.NORMAL;
@@ -24,9 +25,10 @@ public class Spawner : InteractableBase
     public bool randomMaterial;
     public bool randomShape;
 
-    private void Start()
+    private void Awake()
     {
         state = FindObjectOfType<GlobalState>();
+        onSpawned = new EventTriggerable();
     }
 
     private void Update()
@@ -46,7 +48,7 @@ public class Spawner : InteractableBase
 
         countdown = secondsCooldown;
         var created = Instantiate(box);
-        state.OnSpawned(created);
+        onSpawned.Invoke(created);
 
         if (randomSize)
         {
