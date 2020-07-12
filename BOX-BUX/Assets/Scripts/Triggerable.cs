@@ -14,5 +14,6 @@ public interface Triggerable
     ColorType GetColorType();
     MaterialType GetMaterialType();
     ShapeType GetShapeType();
+    SizeType GetSizeType();
     Pickable asPickable();
 }

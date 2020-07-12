@@ -209,6 +209,11 @@ public class Pickable : InteractableBase, Triggerable
         return shapeType;
     }
 
+    public SizeType GetSizeType()
+    {
+        return sizeType;
+    }
+
     public Pickable asPickable()
     {
         return this;

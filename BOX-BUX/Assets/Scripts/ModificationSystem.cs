@@ -63,20 +63,39 @@ public class ModificationSystem : MonoBehaviour
             case ChangeType.SHAPE_TETRAHEDRON:
                 shape = ShapeType.TETRAHEDRON;
                 break;
-            case ChangeType.SIZE_BIG:
-                size = SizeType.BIG;
+            case ChangeType.SIZE_DECREASE:
+                switch (triggerable.GetSizeType())
+                {
+                    case SizeType.XBIG:
+                        size = SizeType.BIG;
+                        break;
+                    case SizeType.BIG:
+                        size = SizeType.NORMAL;
+                        break;
+                    case SizeType.NORMAL:
+                        size = SizeType.SMALL;
+                        break;
+                    case SizeType.SMALL:
+                        size = SizeType.XSMALL;
+                        break;
+                }
                 break;
-            case ChangeType.SIZE_NORMAL:
-                size = SizeType.NORMAL;
-                break;
-            case ChangeType.SIZE_SMALL:
-                size = SizeType.SMALL;
-                break;
-            case ChangeType.SIZE_XBIG:
-                size = SizeType.XBIG;
-                break;
-            case ChangeType.SIZE_XSMALL:
-                size = SizeType.XSMALL;
+            case ChangeType.SIZE_INCREASE:
+                switch (triggerable.GetSizeType())
+                {
+                    case SizeType.BIG:
+                        size = SizeType.XBIG;
+                        break;
+                    case SizeType.NORMAL:
+                        size = SizeType.BIG;
+                        break;
+                    case SizeType.SMALL:
+                        size = SizeType.NORMAL;
+                        break;
+                    case SizeType.XSMALL:
+                        size = SizeType.SMALL;
+                        break;
+                }
                 break;
             default:
                 throw new System.Exception("unhandled ChangeType: " + type);
