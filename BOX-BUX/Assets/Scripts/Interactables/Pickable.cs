@@ -13,6 +13,7 @@ namespace VHS
         public MaterialType materialType;
         public ShapeType shapeType;
         public SizeType sizeType;
+        public Spawner spawner;
 
         private void Awake()
         {
@@ -31,20 +32,16 @@ namespace VHS
 
         public void SetMaterial(MaterialType type)
         {
-            Debug.Log("Set " + type);
             SetMaterialAndColor(type, colorType);
         }
 
         public void SetColor(ColorType type)
         {
-            Debug.Log("Set " + type);
             SetMaterialAndColor(materialType, type);
         }
 
         private void SetMaterialAndColor(MaterialType materialType, ColorType colorType)
         {
-            Debug.Log(materialType);
-            Debug.Log(colorType);
             ColorAndMaterialType? type = null;
             switch (materialType)
             {
