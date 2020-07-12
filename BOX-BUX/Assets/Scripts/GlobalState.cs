@@ -16,14 +16,15 @@ public class GlobalState : MonoBehaviour
         return FindObjectOfType<GlobalState>();
     }
 
-    private void OnSpawned(Pickable pickable)
+    private void OnSpawned(Triggerable box)
     {
-        spawned.Add(pickable);
+        spawned.Add(box.asPickable());
     }
 
     private void Start()
     {
         Trasher.onTrashed.AddListener(Trash);
+        Spawner.onSpawned.AddListener(OnSpawned);
     }
 
     private void Trash(Triggerable toTrash)
