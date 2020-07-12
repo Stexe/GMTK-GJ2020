@@ -153,6 +153,7 @@ public class Pickable : InteractableBase, Triggerable
 
     public void SetSize(SizeType type)
     {
+        sizeType = type;
         float scale;
         switch (type)
         {
