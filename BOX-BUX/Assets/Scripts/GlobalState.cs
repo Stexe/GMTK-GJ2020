@@ -23,15 +23,24 @@ public class GlobalState : MonoBehaviour
 
     private void Start()
     {
-        Trasher.onTrashed.AddListener(Trash);
+        Trasher.onTrashed.AddListener(OnTrash);
         Spawner.onSpawned.AddListener(OnSpawned);
+        DeliveryZone.onDelivered.AddListener(OnDeliver);
     }
 
-    private void Trash(Triggerable toTrash)
+    private void OnTrash(Triggerable toTrash)
     {
         if (!spawned.Remove(toTrash.asPickable()))
         {
             throw new System.Exception("Failed to trash: " + toTrash);
+        }
+    }
+
+    private void OnDeliver(Triggerable delivered)
+    {
+        if (!spawned.Remove(delivered.asPickable()))
+        {
+            throw new System.Exception("Failed to despawn delivered: " + delivered);
         }
     }
 }
