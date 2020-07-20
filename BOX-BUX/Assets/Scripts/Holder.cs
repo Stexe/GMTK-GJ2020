@@ -35,6 +35,7 @@ public class Holder : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && !becomingHeld)
         {
+            Debug.Log("Releasing");
             onRelease.Invoke(held);
             held.GetComponent<Rigidbody>().isKinematic = false;
             held = null;
@@ -45,6 +46,7 @@ public class Holder : MonoBehaviour
 
     public void SetHeld(Pickable held)
     {
+        Debug.Log("Holding");
         becomingHeld = true;
         this.held = held;
         held.GetComponent<Rigidbody>().isKinematic = true;
