@@ -103,24 +103,32 @@ public class ModificationSystem : MonoBehaviour
                 throw new System.Exception("unhandled ChangeType: " + type);
         }
 
-        if (shape != null)
+        bool transformed = false;
+        if (shape != null && triggerable.GetShapeType() != shape)
         {
             triggerable.SetShape(shape.Value);
+            transformed = true;
         }
-        else if (color != null)
+        else if (color != null && triggerable.GetColorType() != color)
         {
             triggerable.SetColor(color.Value);
+            transformed = true;
         }
-        else if (material != null)
+        else if (material != null && triggerable.GetMaterialType() != material)
         {
             triggerable.SetMaterial(material.Value);
+            transformed = true;
         }
-        else if (size != null)
+        else if (size != null && triggerable.GetSizeType() != size)
         {
             triggerable.SetSize(size.Value);
+            transformed = true;
         }
 
-        onTransform.Invoke(triggerable, type);
+        if (transformed)
+        {
+            onTransform.Invoke(triggerable, type);
+        }
     }
 
     public static ModificationSystem get()

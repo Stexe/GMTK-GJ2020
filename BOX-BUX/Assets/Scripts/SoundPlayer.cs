@@ -33,10 +33,10 @@ public class SoundPlayer : MonoBehaviour
             case ChangeType.COLOR_GREY:
             case ChangeType.COLOR_RED:
             case ChangeType.COLOR_YELLOW:
-                //Play(transformColor);
+                Play(transformColor);
                 break;
             default:
-//                Play(transformOther);
+                Play(transformOther);
                 break;
         }
     }
