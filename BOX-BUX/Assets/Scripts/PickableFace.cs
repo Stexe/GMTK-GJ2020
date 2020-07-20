@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using VHS;
 
-namespace VHS {
-    public class PickableFace : InteractableBase
+public class PickableFace : InteractableBase
+{
+    public ChangeType changeType;
+
+    private PickableFaceObj parent;
+
+    public void Awake()
     {
-        public ChangeType changeType;
-        
-        private PickableFaceObj parent;
+        parent = GetComponentInParent<PickableFaceObj>();
+        Assert.IsNotNull(parent);
+    }
 
-        public void Awake()
+    public override void OnInteract()
+    {
+        bool inFacesZone = GlobalState.get().facesZone.GetComponent<Collider>().bounds.Intersects(parent.GetComponent<Collider>().bounds);
+        if (parent.holder.held == null && inFacesZone)
         {
-            parent = GetComponentInParent<PickableFaceObj>();
-            Assert.IsNotNull(parent);
+            ModificationSystem.MakeChange(parent, changeType);
         }
-
-        public override void OnInteract()
-        {
-            bool inFacesZone = GlobalState.get().facesZone.GetComponent<Collider>().bounds.Intersects(parent.GetComponent<Collider>().bounds);
-            if (parent.holder.held == null && inFacesZone)
-            {
-                ModificationSystem.MakeChange(parent, changeType);
-            }
-            parent.OnFace();
-        }
+        parent.OnFace();
     }
 }
