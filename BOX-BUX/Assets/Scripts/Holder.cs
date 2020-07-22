@@ -46,6 +46,10 @@ public class Holder : MonoBehaviour
 
     public void SetHeld(Pickable held)
     {
+        if (releasing)
+        {
+            return;
+        }
         Debug.Log("Holding");
         becomingHeld = true;
         this.held = held;
