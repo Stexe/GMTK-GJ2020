@@ -51,6 +51,7 @@ public class Holder : MonoBehaviour
             return;
         }
         Debug.Log("Holding");
+        held.rigid.isKinematic = true;
         becomingHeld = true;
         this.held = held;
         held.GetComponent<Rigidbody>().isKinematic = true;

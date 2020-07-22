@@ -35,7 +35,6 @@ public class Pickable : InteractableBase, Triggerable
         if (holder.held == null)
         {
             holder.SetHeld(this);
-            rigid.isKinematic = true;
         }
     }
 
